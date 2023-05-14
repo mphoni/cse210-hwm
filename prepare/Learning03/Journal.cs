@@ -1,15 +1,28 @@
-using System;
+using System.Collections.Generic;
 
-public class Journal{
+namespace Develop02
+{
+    public class Journal
+    {
+        public List<Entry> entries;
 
-    public string _storeEntry;
-    public string _saveEntry;
-    public string _loadEntry;
-    public List<Entry> _entries = new List<Entry>();
-   
-    public void Display(){
-        Console.WriteLine("welcome to your journal");
+        public Journal ()
+        {
 
+            entries = new List<Entry>();
+        }
+        public List<Entry> GetAllEntries()
+        {
+            return entries;
+        }
+
+        public void StoreEntry (Entry entry)  
+        {
+            if(!entries.Contains(entry))
+            {
+                entries.Add(entry);
+            }
+
+        }
     }
-
 }
