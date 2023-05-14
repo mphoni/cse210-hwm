@@ -1,9 +1,24 @@
-using System;
+namespace Develop02
+{
+    public class Entry
+    {
+        public string prompt;
+        public string response;
+        public string date;
 
-public class Entry{
+        public object text { get; internal set; }
 
-    public string _notes;
+        public string GetAsString()
+        {
+            return $"{date}\n{prompt}\n{response}\n";
+        }
 
-    public string _response;
+        public void Store(string prompt, string response, string date)
+        {
+            this.prompt = prompt;
+            this.response = response;
+            this.date = date;
+        }  
+    }
 
 }
