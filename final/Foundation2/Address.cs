@@ -1,38 +1,31 @@
 using System;
 
-namespace Foundation2
-{
+// namespace Foundation2
+// {
     public class Address
     {
-        private string _streetAddress;
-        private string _city;
-        private string _stateProvince;
-        private string _country;
+    private string streetAddress;
+    private string city;
+    private string stateOrProvince;
+    private string country;
 
-        public Address(string country)
-        {
-            _country = country;
-        }
-        public string GetCountry() 
-        {
-            return _country;
-        }
+    public Address(string streetAddress, string city, string stateOrProvince, string country)
+    {
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.stateOrProvince = stateOrProvince;
+        this.country = country;
+    }
 
-        public void SetStreet(string country)
-        {
-            _country = country;
-        }
+    public bool IsInUSA()
+    {
+        return country == "USA";
+    }
 
-
-        public bool IsInUSA()
-        {
-            return GetCountry() == "USA" || GetCountry() == "United States";
-        }
-
-        public override string ToString()
-        {
-            return $"{_streetAddress}\n{_city}, {_stateProvince}\n{_country}";
-        }
+    public override string ToString()
+    {
+        return $"{streetAddress}\n{city}, {stateOrProvince}\n{country}";
+    }
 
     }
-}
+// }

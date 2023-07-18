@@ -1,31 +1,58 @@
 using System;
 
-namespace Foundation2
-{
+// namespace Foundation2
+// {
   class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Foundation2 World!");
+        Product product1 = new Product("StellarGlow Facial Serum", "SGFS1234", 29.99, 50);
+        Product product2 = new Product("AquaBlast Water Bottle", "ABWB2345", 12.99, 200);
+        Product product3 = new Product("PowerMax Pro Protein Powder", "PMPPP3456", 39.99, 75);
+        Product product4 = new Product("SwiftStride Running Shoes", "SSRS5678", 79.99, 25);
+        Product product5 = new Product("ChillWave Bluetooth Speaker", "CWBS9876", 49.99, 100);
 
-            Orders order1 = new Orders();
-            order1.products.Add(new Product{_name ="a", _id = 20, _price = 20, _quantity = 30});
-            order1.products.Add(new Product{_name ="a", _id = 20, _price = 20, _quantity = 30});
-            order1.products.Add(new Product{_name ="a", _id = 20, _price = 20, _quantity = 30});
 
-            Orders order2 = new Orders();
-            order2.products.Add(new Product{_name ="b", _id = 20, _price = 20, _quantity = 30});
-            order2.products.Add(new Product{_name ="b", _id = 20, _price = 20, _quantity = 30});
-            order2.products.Add(new Product{_name ="b", _id = 20, _price = 20, _quantity = 30});
+        // Creating addresses
+        Address address1 = new Address("123 Main Street", "Springfield", "IL", "USA");
+        Address address2 = new Address("789 Pine Lane", "Riverside", "CA", "USA");
+        Address address3 = new Address("456 Maple Avenue", "Oakville", "ON", "Canada");
 
-            Console.WriteLine(order1.GetPackingLabel());
-            Console.WriteLine(order1.GetShippingLabel());
-            Console.WriteLine(order1.GetTotalPrice());
+        // Create customers
+        Customer customer1 = new Customer("John Smith", address1);
+        Customer customer2 = new Customer("Emma Johnson", address2);
+        Customer customer3 = new Customer("Sarah Thompson", address3);
 
-            Console.WriteLine(order2.GetPackingLabel());
-            Console.WriteLine(order2.GetShippingLabel());
-            Console.WriteLine(order2.GetTotalPrice());
+        // Create orders
+        List<Product> products1 = new List<Product> { product1, product2 };
+        Order order1 = new Order(products1, customer1);
 
+        List<Product> products2 = new List<Product> { product3, product4 };
+        Order order2 = new Order(products2, customer2);
+
+        List<Product> products3 = new List<Product> { product5, product3 };
+        Order order3 = new Order(products3, customer3);
+
+        // Display the results for each order
+        Console.WriteLine("Order 1");
+        Console.WriteLine("-------");
+        Console.WriteLine($"Total price: ${order1.TotalPrice()}");
+        Console.WriteLine($"Packing label:\n{order1.PackingLabel()}");
+        Console.WriteLine($"Shipping label:\n{order1.ShippingLabel()}");
+        Console.WriteLine();
+
+        Console.WriteLine("Order 2");
+        Console.WriteLine("-------");
+        Console.WriteLine($"Total price: ${order2.TotalPrice()}");
+        Console.WriteLine($"Packing label:\n{order2.PackingLabel()}");
+        Console.WriteLine($"Shipping label:\n{order2.ShippingLabel()}");
+        Console.WriteLine();
+
+        Console.WriteLine("Order 3");
+        Console.WriteLine("-------");
+        Console.WriteLine($"Total price: ${order3.TotalPrice()}");
+        Console.WriteLine($"Packing label:\n{order3.PackingLabel()}");
+        Console.WriteLine();
         }
     }  
-}
+// }

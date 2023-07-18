@@ -1,70 +1,47 @@
- using System;
+using System;
 
- namespace Foundation2
- {
-    
- 
- class Orders
+// namespace Foundation2
+//  {
+    class Order
     {
-        public List<Product> products = new List<Product>();
-        public Customer customer1;
+    private List<Product> products;
+    private Customer customer;
 
-        public Orders()
-        {
-            products = new List<Product>();
-        }
+    public Order(List<Product> products, Customer customer)
+    {
+        this.products = products;
+        this.customer = customer;
+    }
 
-        public void AddProduct(Product product)
-        {
-            products.Add(product);
-        }
-
-        public void GetCustomer(Customer address)
-        {
-            customer1 = address;
-        }
-
-         public decimal GetTotalPrice()
-        {
-            decimal totalPrice = 0;
-            foreach (Product product in products)
-            {
-                totalPrice += product.GetPrice();
-            }
-            if (customer1.address1.GetCountry() == "USA")
-            {
-                totalPrice += 5;
-            }
-            else
-            {
-                totalPrice += 35;
-            }
-            return totalPrice;
-        }
-        public string GetPackingLabel()
-      {
-        string packingLabel = "";
+    public double TotalPrice()
+    {
+        double total = 0;
         foreach (Product product in products)
         {
-            packingLabel += $"Name: {product._name}, Product ID: {product._id}\n";
+            total += product.Price * product.Quantity;
         }
-        return packingLabel;
-        }
+        total += customer.IsInUSA() ? 5 : 35;
+        return total;
+    }
 
-        public string GetShippingLabel()
+    public string PackingLabel()
     {
-        string shippingLabel = "";
-        if (customer1.address1.GetCountry() == "USA")
+        string label = "";
+        foreach (Product product in products)
         {
-            shippingLabel += $"Name: {customer1._name}, Address: {customer1.address1.GetCountry() }, Shipping Cost: $5\n";
+            label += $"{product.Name} ({product.ProductId})\n";
         }
-        else
-        {
-            shippingLabel += $"Name: {customer1.GetName}, Address: {customer1.address1.GetCountry() }, Shipping Cost: $35\n";
-        }
-        return shippingLabel;
-    
+        return label;
     }
+
+    public string ShippingLabel()
+    {
+        return $"{customer.Name}\n{customer.Address}";
     }
- } 
+
+       
+      
+    }
+// }
+ 
  

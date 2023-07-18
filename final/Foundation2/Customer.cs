@@ -1,37 +1,31 @@
 using System;
 
-namespace Foundation2
-{
+// namespace Foundation2
+// {
     public class Customer
     {
-        public string _name;
-        public Address address1;
+    private string name;
+    private Address address;
 
-   
-        public Customer()
-        {
-           
-            address1.GetCountry();
-            address1.ToString();
-            
-        }
-        public string GetName()
-        {
-            return _name;
-        }
-        public void SetName(string name )
-        {
-            _name = name;
-        }
-
-        public bool IsInUSA()
-        {
-            return this.address1.IsInUSA();
-        }
-
-        public void Display()
-        {
-            Console.WriteLine(GetName());
-        }
+    public Customer(string name, Address address)
+    {
+        this.name = name;
+        this.address = address;
     }
-}
+
+    public bool IsInUSA()
+    {
+        return address.IsInUSA();
+    }
+
+    public string Name
+    {
+        get { return name; }
+    }
+
+    public Address Address
+    {
+        get { return address; }
+    }
+    }
+// }

@@ -1,30 +1,42 @@
 using System;
 
-namespace Foundation2
-{
+// namespace Foundation2
+
+// {
     public class Product
     {
-        public string _name;
-        public int _id;
-        public decimal _price;
-        public int _quantity;
+    private string name;
+    private string productId;
+    private double price;
+    private int quantity;
 
-        public Product()
-        {
-            
-        }
-        public Product(string name, int id, decimal price, int quantity)
-        {
-            _name = name;
-            _id = id;
-            _price = price;
-            _quantity = quantity;
-        }
-
-        public decimal GetPrice()
-        {
-            return _price * _quantity;
-        } 
-
+    public Product(string name, string productId, double price, int quantity)
+    {
+        this.name = name;
+        this.productId = productId;
+        this.price = price;
+        this.quantity = quantity;
     }
-}
+
+    public string Name
+    {
+        get { return name; }
+    }
+
+    public string ProductId
+    {
+        get { return productId; }
+    }
+
+    public double Price
+    {
+        get { return price; }
+    }
+
+    public int Quantity
+    {
+        get { return quantity; }
+    }
+        
+    }
+// }
